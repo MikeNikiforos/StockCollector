@@ -3,8 +3,6 @@
 using System.Collections.Concurrent;
 using System.Net;
 
-
-
 class Program
 {
     public class TicketRecord
@@ -46,10 +44,10 @@ class Program
         }
 
         // Display the mocked data collections
-        DisplayDataCollections(tickerCollection, recordCollection);
+        await DisplayDataCollections(tickerCollection, recordCollection);
 
         // Fake call to store both collections in a pretend database
-        StoreInDatabase(tickerCollection, recordCollection);
+        await StoreInDatabase(tickerCollection, recordCollection);
     }
     static async Task ProcessMonthData(int month, int year, ConcurrentDictionary<string, int> tickerCollection, ConcurrentDictionary<string, TicketRecord> recordCollection)
     {

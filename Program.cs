@@ -27,7 +27,7 @@ class Program
     const int YEAR = 2023;
     static string apiUrlBase = $"https://tradestie.com/api/v1/apps/reddit?date={YEAR}-";
     const int RATELIMIT = 60;
-    static ILogger logger = new FileLogger(@"c:\temp\results\enhanced-2.txt");
+    static ILogger logger = new FileLogger(@"c:\temp\results.txt");
     
     static async Task Main(string[] args)
     {
@@ -228,7 +228,7 @@ public class FileLogger : ILogger
         }
 
         // Create the file if it doesn't exist
-        if (!File.Exists(_filePath))
+        if (File.Exists(_filePath))
         {
             File.Create(_filePath).Dispose(); // Dispose the file stream immediately after creating the file
         }

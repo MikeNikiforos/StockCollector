@@ -15,7 +15,7 @@ The original program had several critical issues, including:
 6. **Poor Data Structure**:
    - Used `List<Tuple<string, int>>` for collections, which lacked clarity and proper typing.
    - Added duplicate entries for tickers instead of aggregating them.
-7  **Instantiating** HttpClient: A new HttpClient was created for every API call. This is a bad practice as it can lead to socket exhaustion and performance issues due to inefficient connection reuse
+7  **Instantiating** HttpClient: A new HttpClient was created for every API call. This is a bad practice as it can lead to socket exhaustion and performance issues due to inefficient connection reuse.
 8. **Separation of Concerns**:
    - Used tuples instead of strongly typed classes.
    - Mixed concerns, such as direct API calls within nested loops and processing API data in a single method.

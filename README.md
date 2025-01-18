@@ -1,5 +1,7 @@
 # Program Summary
 
+## The results.txt file contain the output of the application
+
 ## Key Flaws in the Original Program
 The original program had several critical issues, including:
 1. **API Rate Limit Handling**: The program failed to account for the data partner API's rate limit of 60 calls per minute. Exceeding this limit resulted in `Too Many Requests` errors.

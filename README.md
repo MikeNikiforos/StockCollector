@@ -4,18 +4,19 @@
 
 ## Key Flaws in the Original Program
 The original program had several critical issues, including:
+
 1. **API Rate Limit Handling**: The program failed to account for the data partner API's rate limit of 60 calls per minute. Exceeding this limit resulted in `Too Many Requests` errors.
 2. **Data Aggregation**: It stored incorrect counts and lacked aggregation, resulting in duplicate entries for the same ticker rather than consolidating them.
-3. **Skipped Data**: The program missed processing data for May 31st.
-4. **Error Handling**:
+3. **Instantiating HttpClient**: A new `HttpClient` was created for every API call. This is a bad practice as it can lead to socket exhaustion and performance issues due to inefficient connection reuse.
+4. **Skipped Data**: The program missed processing data for May 31st.
+5. **Error Handling**:
    - API calls lacked error handling for rate limits or server errors.
    - Requests were not retried on failure.
-5. **Sequential Processing**:
+6. **Sequential Processing**:
    - API data processing was done in a single-threaded, sequential manner without considering rate limits.
-6. **Poor Data Structure**:
+7. **Poor Data Structure**:
    - Used `List<Tuple<string, int>>` for collections, which lacked clarity and proper typing.
    - Added duplicate entries for tickers instead of aggregating them.
-7  **Instantiating** HttpClient: A new HttpClient was created for every API call. This is a bad practice as it can lead to socket exhaustion and performance issues due to inefficient connection reuse.
 8. **Separation of Concerns**:
    - Used tuples instead of strongly typed classes.
    - Mixed concerns, such as direct API calls within nested loops and processing API data in a single method.
